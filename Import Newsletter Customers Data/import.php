@@ -23,10 +23,12 @@ if (($handle = fopen($csv_filepath, "r")) !== FALSE) { // Read Your Csv File
         $emailId =  $data[1]; // email Id
        // Fatch customer Data 
         if($customerAccountManagement->isEmailAvailable($emailId , $websiteId)){
-            echo $emailId."=> Imported Successfully" ."\n";
+            echo $emailId."\n";
+            echo "=> Imported Successfully" ."\n \n";
             $_subscriberFactory->create()->subscribe($emailId );
         }else{
-            echo $emailId ."Register"."\n";
+            echo $emailId."\n";
+            echo "Register"."\n \n";
             $customerFactory = $obj->get('Magento\Customer\Model\CustomerFactory');
             $customer=$customerFactory->create();
             $customer->setWebsiteId($websiteId);
